@@ -5,6 +5,8 @@ def scan_target(target, start_port, end_port):
     print(f"\n🔍 Scanning Target: {target}")
     print(f"🎯 Ports: {start_port} to {end_port}\n")
     
+    open_ports = []
+
     for port in range(start_port, end_port + 1):
         try:
             sock = socket.socket()
@@ -14,10 +16,20 @@ def scan_target(target, start_port, end_port):
                 banner = sock.recv(1024).decode().strip()
             except:
                 banner = "No banner"
-            print(f"[+] Port {port:5d} is OPEN --> Banner: {banner}")
+            result = f"[+] Port {port:5d} is OPEN --> Banner: {banner}"
+            print(result)
+            open_ports.append(result)
             sock.close()
         except:
             pass
+
+    if open_ports:
+        with open("scan_report.txt", "w") as file:
+            file.write(f"Scan Report for {target}\n")
+            file.write("\n".join(open_ports))
+        print("\n✅ Scan report saved to 'scan_report.txt'")
+    else:
+        print("\n❌ No open ports found.")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Simple Vulnerability Scanner")

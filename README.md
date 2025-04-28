@@ -8,6 +8,7 @@ A simple Python-based vulnerability scanner that scans a target for open ports a
 - Timeout handling for faster scans
 - Clean and simple CLI
 
+
 ## 🛠️ Built With
 - Python 3
 - Socket library (built-in)
@@ -17,5 +18,9 @@ Install Python packages (if any):
 ```bash
 pip install -r requirements.txt
 
- ## example 
- python scanner.py --target example.com --start-port 20 --end-port 100
+ ## Example
+
+```bash
+python scanner.py --target example.com --start-port 20 --end-port 100
+
+After the scan, a report is automatically saved to a file named `scan_report.txt`.

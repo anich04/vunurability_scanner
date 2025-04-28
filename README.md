@@ -19,3 +19,6 @@ A simple Python-based vulnerability scanner that scans a target for open ports a
 Install Python packages (if any):
 ```bash
 pip install -r requirements.txt
+
+ ## example 
+ python scanner.py --target example.com --start-port 20 --end-port 100
